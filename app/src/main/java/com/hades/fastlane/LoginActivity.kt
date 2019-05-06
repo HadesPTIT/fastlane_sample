@@ -24,6 +24,7 @@ import android.widget.TextView
 import java.util.ArrayList
 import android.Manifest.permission.READ_CONTACTS
 import com.crashlytics.android.Crashlytics
+import com.testfairy.TestFairy
 import io.fabric.sdk.android.Fabric
 
 import kotlinx.android.synthetic.main.activity_login.*
@@ -41,7 +42,10 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         super.onCreate(savedInstanceState)
 
         //Set up fabric
-        Fabric.with(this,Crashlytics())
+//        Fabric.with(this,Crashlytics())
+
+        // Setup with test fairy
+        TestFairy.begin(this, "SDK-zQoA4hfh")
 
         setContentView(R.layout.activity_login)
         // Set up the login form.
