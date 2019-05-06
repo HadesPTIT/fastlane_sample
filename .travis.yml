@@ -18,6 +18,27 @@ android:
 
 before_install:
 - yes | sdkmanager "platforms;android-28"
+- chmod +x gradlew
+
+branches:
+  only:
+  - master
+  - develop  #  With this script, it will only allow travis to build when there is branch update or pull request to branch master and develop. Depend on your setting at Travis dasshboard
 
 script:
-- ./gradlew assembleDebug
+- bash gradlew assembleRelease --info
+- find . -iname *.apk
+
+cache:
+  directories:
+  - $HOME/.gradle/caches/
+  - $HOME/.gradle/wrapper/
+
+deploy:
+  provider: releases
+  api_key: "8466010a56308dc67ff5dce77caeb558797e7546"
+  file:
+  - Fastlane/app/build/outputs/apk/release/app-release-unsigned.apk
+  skip_cleanup: true
+  on:
+    tags: true
