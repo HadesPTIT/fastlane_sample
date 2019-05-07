@@ -7,22 +7,22 @@ android:
   - platform-tools
   - tools
 
-  - build-tools-28.0.3
+  - build-tools-26.0.3
 
-  - android-28
+  - android-26
 
   - extra-google-google_play_services
   - extra-google-m2repository
   - extra-android-m2repository
-  - addon-google_apis-google-19
+  - addon-google_apis-google-26
 
 
 before_install:
 - gem update --system
 - gem install fastlane --no-document --quiet
 - chmod +x gradlew
-- yes | sdkmanager "platforms;android-28"
+- yes | sdkmanager "platforms;android-26"
 
 
 script:
-- fastlane android debug branch:10_travis_ci_fastlane
+- fastlane android debug branch:11_travis_ci_fast
