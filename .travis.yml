@@ -23,8 +23,5 @@ before_install:
 - chmod +x gradlew
 - yes | sdkmanager "platforms;android-28"
 
-
-
-
 script:
 - fastlane android debug branch:10_travis_ci_fastlane
